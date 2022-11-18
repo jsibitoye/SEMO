@@ -5,7 +5,7 @@ public class Airport {
 	private String city;
 	private String country;
 	
-	Airport(String city, String country) {
+	Airport(String airportName, String city, String country) {
 		
 	}
 	
