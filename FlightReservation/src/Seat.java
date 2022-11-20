@@ -22,7 +22,5 @@ public class Seat {
 		this.seatAvailability = seatAvailability;
 	}
 	
-	public String toString() {
-		return seatNumber + seatAvailability;
-	}
+
 }
