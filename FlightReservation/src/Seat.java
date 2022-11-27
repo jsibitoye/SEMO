@@ -2,10 +2,11 @@
 public class Seat {
 	
 	private int seatNumber;
-	private boolean seatAvailability;
+	private Passenger passengerInfo;
 	
-	Seat(int seatNumber, boolean seatAvailability) {
-		
+	Seat(int seatNumber) {
+		this.seatNumber = seatNumber;
+		this.passengerInfo = null;
 	}
 	
 	public int getSeatNumber() {
@@ -16,11 +17,27 @@ public class Seat {
 		this.seatNumber = seatNumber;
 	}
 	public boolean isSeatAvailability() {
-		return seatAvailability;
+		if(passengerInfo == null) {
+		return true;
+		}
+		return false;
 	}
-	public void setSeatAvailability(boolean seatAvailability) {
-		this.seatAvailability = seatAvailability;
+	public Passenger getPassengerInfo() {
+		return passengerInfo;
 	}
 	
-
+	public void setPassengerInfo(Passenger passengerInfo) {
+		this.passengerInfo = passengerInfo;
+	}
+	
+	public String toString() {
+		String returnString = "Seat" + " " + seatNumber + ":";
+		if(passengerInfo == null) {
+			returnString += " Empty";
+		}
+		else {
+			returnString += " " + passengerInfo ;
+		}
+		return returnString;
+	}
 }
