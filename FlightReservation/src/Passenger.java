@@ -1,18 +1,20 @@
 
 public class Passenger {
-	private Name passengerName;
+	private String passengerName;
 	private String address;
 	private String phoneNumber;
 	
-	Passenger(Name passengerName, String address, String phoneNumber) {
-		
+	Passenger(String passengerName, String address, String phoneNumber) {
+		this.passengerName = passengerName;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
 	}
 
-	public Name getPassengerName() {
+	public String getPassengerName() {
 		return passengerName;
 	}
 
-	public void setPassengerName(Name passengerName) {
+	public void setPassengerName(String passengerName) {
 		this.passengerName = passengerName;
 	}
 	
@@ -37,6 +39,6 @@ public class Passenger {
 	}
 	
 	public String toString() {
-		return "Name: " + passengerName + "\n" + "Address: " + address + "\n" + "Phone Number: " + phoneNumber;
+		return "Name: " + passengerName + " " + "Address: " + address + " " + "Phone Number: " + phoneNumber;
 	}
 }
