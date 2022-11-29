@@ -29,7 +29,7 @@ public class MainDriver {
 				System.out.println("You have exited the program");
 				break;
 			case 1:
-				System.out.println("Enter 3 digit airport code for origin: Ex.ATL ");
+				System.out.print("Enter 3 digit airport code for origin: Ex.ATL ");
 				String originAirportCode = input.next();
 				System.out.println("Enter 3 digit airport code for destination: Ex.MCO ");
 				String destinationAirportCode = input.next();
