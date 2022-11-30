@@ -9,7 +9,7 @@ public class Flight {
 	private Date arrivalTime;
 	private Seat[] passengerSeats;
 
-	Flight(int flightNumber, Airport origin, Airport destination, Date departureTime, Date arrivalTime,int numOfSeats) {
+	Flight(int flightNumber, Airport origin, Airport destination, Date departureTime, Date arrivalTime, int numOfSeats) {
 		this.flightNumber = flightNumber;
 		this.origin = origin;
 		this.destination = destination;
@@ -17,7 +17,7 @@ public class Flight {
 		this.arrivalTime = arrivalTime;
 		this.passengerSeats = new Seat[numOfSeats];
 		for(int i = 0; i<numOfSeats; i++) {
-			this.passengerSeats[i] = new Seat(i);
+			this.passengerSeats[i] = new Seat(i +1);
 		}
 	}
 
@@ -62,26 +62,17 @@ public class Flight {
 	}
 
 	public Seat getPassengerSeat(int seatNumber) {
-		return this.passengerSeats[seatNumber];
+		return this.passengerSeats[seatNumber-1];
 	}
 
 	public void setPassengerSeat(Passenger passenger, int seatNumber) {
-			if(passengerSeats[seatNumber].isSeatAvailability()) {
-				passengerSeats[seatNumber].setPassengerInfo(passenger);
+			if(passengerSeats[seatNumber-1].isSeatAvailability()) {
+				passengerSeats[seatNumber-1].setPassengerInfo(passenger);
 			}
 			else {
-				System.out.println("Seat is not availible");
+				System.out.println("Seat is not available");
 			}
 		}
-	
-
-	public void bookFlight() {
-
-	}
-
-	public void cancelFlight() {
-
-	}
 
 	public String toString() {
 		String returnString = "Flight number: " + flightNumber + "\nOriginating Airport: " + origin + "\nDestination Airport: "

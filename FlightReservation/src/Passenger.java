@@ -18,10 +18,6 @@ public class Passenger {
 		this.passengerName = passengerName;
 	}
 	
-	public void newPassenger() {
-		
-	}
-
 	public String getAddress() {
 		return address;
 	}
