@@ -30,9 +30,9 @@ public class MainMenu {
 				System.out.println("You have exited the program");
 				break;
 			case 1:
-				System.out.print("Enter 3 digit airport code for origin: Ex.ATL ");
+				System.out.print("Enter 3 digit airport code for origin (Ex.ATL): ");
 				String originAirportCode = input.next();
-				System.out.println("Enter 3 digit airport code for destination: Ex.MCO ");
+				System.out.print("Enter 3 digit airport code for destination (Ex.MCO): ");
 				String destinationAirportCode = input.next();
 
 				ArrayList<Flight> matchedFlights = searchFlights(flightDB, originAirportCode, destinationAirportCode);
@@ -49,21 +49,21 @@ public class MainMenu {
 				}
 				break;
 			case 2:
-				System.out.println("Enter flight number: ");
+				System.out.print("Enter flight number: ");
 				int selectedFlightNumber = input.nextInt();
 				Flight selectedFlight = flightDB.getFlight(selectedFlightNumber);
 				System.out.println(selectedFlight);
-				System.out.println("Enter empty seat number: ");
+				System.out.print("Enter empty seat number: ");
 				int selectedSeatNumber = input.nextInt();
 				input.nextLine();
 				Seat selectedSeat = selectedFlight.getPassengerSeat(selectedSeatNumber);
 				if (selectedSeat.isSeatAvailability()) {
 					System.out.print("Enter Name: ");
 					String nameEntered = input.nextLine();
-					System.out.print("Enter Phone Number: ");
-					String phoneNumberEntered = input.nextLine();
 					System.out.print("Enter Address: ");
 					String addressEntered = input.nextLine();
+					System.out.print("Enter Phone Number: ");
+					String phoneNumberEntered = input.nextLine();
 
 					Passenger userPassenger = new Passenger(nameEntered, addressEntered, phoneNumberEntered);
 					System.out.println(userPassenger);
@@ -74,7 +74,7 @@ public class MainMenu {
 				}
 				break;
 			case 3:
-				System.out.println("Enter flight number: ");
+				System.out.print("Enter flight number: ");
 				selectedFlightNumber = input.nextInt();
 				selectedFlight = flightDB.getFlight(selectedFlightNumber);
 				System.out.println(selectedFlight);
