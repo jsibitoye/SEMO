@@ -14,6 +14,11 @@ public class FlightDatabase {
 		Airport boston = new Airport("Boston", "USA", "BOS");
 		Airport atlanta = new Airport("Atlanta", "USA", "ATL");
 		Airport orlando = new Airport("Orlando", "USA", "MCO");
+		Passenger[] fakePassengers = new Passenger[4];
+		fakePassengers[0] = new Passenger("Ricky Bobby", "1 Fast st", "3216964587");
+		fakePassengers[1] = new Passenger("Tyler Blankenship", "2 Fast st", "3216964588");
+		fakePassengers[2] = new Passenger("Indranil Roy", "3 Fast st", "3216964589");
+		fakePassengers[3] = new Passenger("Ethan Chou", "4 Fast st", "3216964586");
 		Calendar myCal = Calendar.getInstance();
 		myCal.set(Calendar.YEAR, 2022);
 		myCal.set(Calendar.MONTH, 11);
@@ -23,7 +28,7 @@ public class FlightDatabase {
 		myCal.set(Calendar.SECOND, 0);
 		Date departureTime;
 		Date arrivalTime;
-		int numOfSeats = 40;
+		int numOfSeats = 10;
 
 		for (int i = 0; i < 5; i++) {
 			myCal.set(Calendar.HOUR, i + 2);
@@ -31,6 +36,9 @@ public class FlightDatabase {
 			myCal.set(Calendar.HOUR, i + 4);
 			arrivalTime = myCal.getTime();
 			Flight flight1 = new Flight(80086 + i, austin, boston, departureTime, arrivalTime, numOfSeats);
+			for( int j = 0; j < fakePassengers.length; j++ ) {
+				flight1.setPassengerSeat(fakePassengers[j], j + 1);
+			}
 			availableFlights.add(flight1); }
 
 		for (int i = 0; i < 5; i++) {

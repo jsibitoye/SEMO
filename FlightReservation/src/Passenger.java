@@ -10,7 +10,7 @@ public class Passenger {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public String getPassengerName() {
+	public String getPassengerName() { 
 		return passengerName;
 	}
 

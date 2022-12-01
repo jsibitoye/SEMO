@@ -62,24 +62,35 @@ public class Flight {
 	}
 
 	public Seat getPassengerSeat(int seatNumber) {
+		if(seatNumber > passengerSeats.length || seatNumber < 1) {
+			return null;
+		}
 		return this.passengerSeats[seatNumber-1];
 	}
 
 	public void setPassengerSeat(Passenger passenger, int seatNumber) {
-			if(passengerSeats[seatNumber-1].isSeatAvailability()) {
-				passengerSeats[seatNumber-1].setPassengerInfo(passenger);
-			}
-			else {
-				System.out.println("Seat is not available");
-			}
+		if(passengerSeats[seatNumber-1].isSeatAvailability()) {
+			passengerSeats[seatNumber-1].setPassengerInfo(passenger);
 		}
+		else {
+			System.out.println("Seat is not available");
+		}
+	} 
+	public void deletePassenger(int seatNumber) {
+		if(passengerSeats[seatNumber-1].isSeatAvailability()) {
+			System.out.println("No passenger occupies seat number: " + seatNumber);
+		}
+		else {
+			passengerSeats[seatNumber-1].setPassengerInfo(null);
+		}
+	}
 
 	public String toString() {
 		String returnString = "Flight number: " + flightNumber + "\nOriginating Airport: " + origin + "\nDestination Airport: "
 				+ destination + "\n" + departureTime + "\n" + arrivalTime + "\n";
 		for(int i = 0; i<passengerSeats.length;i++) {
 			returnString += passengerSeats[i].toString() + "\n";
-			
+
 		}
 		return returnString;
 	}

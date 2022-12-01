@@ -14,7 +14,7 @@ public class Seat {
 	}
 
 	public void setSeatNumber(int seatNumber) {
-		this.seatNumber = seatNumber;
+		this.seatNumber = seatNumber; 
 	}
 
 	public boolean isSeatAvailability() {

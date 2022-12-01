@@ -1,15 +1,16 @@
 
-		//switch case for Add New Flight, Delete a Flight, Book a Flight, Cancel a Flight, View Available Flights, View Passenger Info
-		/*switch
-		 * case0: run methods to create a new flight object and add it to data structure
-		 * case1: run methods to delete a flight from database
-		 * case2: run methods to create a passenger object and add to passenger database, then link with flight object in a database?
-		 * case3: run methods to delete link between passenger object and flight object database?
-		 * case4: run method to print all flight objects with corresponding info
-		 * case5: run method to print all passenger objects with corresponding personal info
-		 */
+//switch case for Add New Flight, Delete a Flight, Book a Flight, Cancel a Flight, View Available Flights, View Passenger Info
+/*switch
+ * case0: run methods to create a new flight object and add it to data structure
+ * case1: run methods to delete a flight from database
+ * case2: run methods to create a passenger object and add to passenger database, then link with flight object in a database?
+ * case3: run methods to delete link between passenger object and flight object database?
+ * case4: run method to print all flight objects with corresponding info
+ * case5: run method to print all passenger objects with corresponding personal info
+ */
 import java.util.ArrayList;
 import java.util.Scanner;
+
 // commit test to see synch by josh ###########
 // line 2
 public class MainMenu {
@@ -40,10 +41,10 @@ public class MainMenu {
 					System.out.println("No flights available");
 				} else {
 					System.out.println("Available Flights: ");
-					for (int i = 0; i < matchedFlights.size(); i++) {
+					for (int i = 0; i < matchedFlights.size(); i++) { 
 						System.out.println("\t" + matchedFlights.get(i).getFlightNumber() + " "
-								+ matchedFlights.get(i).getOrigin().getAirportName() + " -> " 
-								+ matchedFlights.get(i).getDestination().getAirportName()+ " " 
+								+ matchedFlights.get(i).getOrigin().getAirportName() + " -> "
+								+ matchedFlights.get(i).getDestination().getAirportName() + " "
 								+ matchedFlights.get(i).getDepartureTime());
 					}
 				}
@@ -57,7 +58,7 @@ public class MainMenu {
 				int selectedSeatNumber = input.nextInt();
 				input.nextLine();
 				Seat selectedSeat = selectedFlight.getPassengerSeat(selectedSeatNumber);
-				if (selectedSeat.isSeatAvailability()) {
+				if (selectedSeat != null && selectedSeat.isSeatAvailability()) {
 					System.out.print("Enter Name: ");
 					String nameEntered = input.nextLine();
 					System.out.print("Enter Address: ");
@@ -78,7 +79,23 @@ public class MainMenu {
 				selectedFlightNumber = input.nextInt();
 				selectedFlight = flightDB.getFlight(selectedFlightNumber);
 				System.out.println(selectedFlight);
+				System.out.print("Enter occupied seat number: ");
+				selectedSeatNumber = input.nextInt();
+				input.nextLine();
+				selectedSeat = selectedFlight.getPassengerSeat(selectedSeatNumber);
+				if (selectedSeat.isSeatAvailability()) {
+					System.out.println("No passenger occupies seat number: " + selectedSeatNumber);
+				} else {
+					selectedFlight.deletePassenger(selectedSeatNumber);
+				}
 				break;
+			case 4:
+				System.out.print("Enter flight number: ");
+				selectedFlightNumber = input.nextInt();
+				selectedFlight = flightDB.getFlight(selectedFlightNumber);
+				System.out.println(selectedFlight);
+				break;
+
 			default:
 				System.out.println("Input not recognized");
 
@@ -98,6 +115,7 @@ public class MainMenu {
 		System.out.println("\t0: Exit");
 		System.out.println("\t1: Search for flights");
 		System.out.println("\t2: Add passenger to flight");
-		System.out.println("\t3: Display flight info for flight number");
+		System.out.println("\t3: Delete passenger from flight");
+		System.out.println("\t4: Display flight info for flight number");
 	}
 }
