@@ -47,6 +47,9 @@ public class FlightDatabase {
 			myCal.set(Calendar.HOUR, i + 3);
 			arrivalTime = myCal.getTime();
 			Flight flight2 = new Flight(80076 + i, orlando, atlanta, departureTime, arrivalTime, numOfSeats);
+			for( int j = 0; j < fakePassengers.length; j++ ) {
+				flight2.setPassengerSeat(fakePassengers[j], j + 1);
+			}
 			availableFlights.add(flight2); }
 
 		for (int i = 0; i < 5; i++) {
@@ -55,6 +58,9 @@ public class FlightDatabase {
 			myCal.set(Calendar.HOUR, i + 3);
 			arrivalTime = myCal.getTime();
 			Flight flight3 = new Flight(80066 + i, atlanta, orlando, departureTime, arrivalTime, numOfSeats);
+			for( int j = 0; j < fakePassengers.length; j++ ) {
+				flight3.setPassengerSeat(fakePassengers[j], j + 1);
+			}
 			availableFlights.add(flight3);
 		}
 
@@ -64,6 +70,9 @@ public class FlightDatabase {
 			myCal.set(Calendar.HOUR, i + 4);
 			arrivalTime = myCal.getTime();
 			Flight flight4 = new Flight(80056 + i, boston, austin, departureTime, arrivalTime, numOfSeats);
+			for( int j = 0; j < fakePassengers.length; j++ ) {
+				flight4.setPassengerSeat(fakePassengers[j], j + 1);
+			}
 			availableFlights.add(flight4);
 		}
 

@@ -53,7 +53,12 @@ public class MainMenu {
 				System.out.print("Enter flight number: ");
 				int selectedFlightNumber = input.nextInt();
 				Flight selectedFlight = flightDB.getFlight(selectedFlightNumber);
+				if(selectedFlight == null) {
+					System.out.println("Flight number is not valid");
+					break;
+				}
 				System.out.println(selectedFlight);
+				
 				System.out.print("Enter empty seat number: ");
 				int selectedSeatNumber = input.nextInt();
 				input.nextLine();
@@ -78,6 +83,10 @@ public class MainMenu {
 				System.out.print("Enter flight number: ");
 				selectedFlightNumber = input.nextInt();
 				selectedFlight = flightDB.getFlight(selectedFlightNumber);
+				if(selectedFlight == null) {
+					System.out.println("Flight number is not valid");
+					break;
+				}
 				System.out.println(selectedFlight);
 				System.out.print("Enter occupied seat number: ");
 				selectedSeatNumber = input.nextInt();
@@ -93,6 +102,10 @@ public class MainMenu {
 				System.out.print("Enter flight number: ");
 				selectedFlightNumber = input.nextInt();
 				selectedFlight = flightDB.getFlight(selectedFlightNumber);
+				if(selectedFlight == null) {
+					System.out.println("Flight number is not valid");
+					break;
+				}
 				System.out.println(selectedFlight);
 				break;
 
