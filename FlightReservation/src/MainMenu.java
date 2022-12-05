@@ -23,99 +23,113 @@ public class MainMenu {
 		Scanner input = new Scanner(System.in);
 		boolean exitFlag = false;
 		System.out.println("\nWELCOME TO CS-500 FLIGHT MANAGEMENT SYSTEM\n");
+		
+		
 		while (exitFlag == false) {
-			displayMenu();
-			int keyInt = input.nextInt();
-			progressBar.loadBar();;
-			switch (keyInt) {
-			case 0:
-				exitFlag = true;
-				System.out.println("You have exited the program");
-				break;
-			case 1:
-				System.out.print("Enter 3 digit airport code for origin (Ex.ATL): ");
-				String originAirportCode = input.next();
-				System.out.print("Enter 3 digit airport code for destination (Ex.MCO): ");
-				String destinationAirportCode = input.next();
-
-				ArrayList<Flight> matchedFlights = searchFlights(flightDB, originAirportCode, destinationAirportCode);
-				if (matchedFlights.size() == 0) {
-					System.out.println("No flights available");
-				} else {
-					System.out.println("Available Flights: ");
-					for (int i = 0; i < matchedFlights.size(); i++) { 
-						System.out.println("\t" + matchedFlights.get(i).getFlightNumber() + " "
-								+ matchedFlights.get(i).getOrigin().getAirportName() + " -> "
-								+ matchedFlights.get(i).getDestination().getAirportName() + " "
-								+ matchedFlights.get(i).getDepartureTime());
-					}
-				}
-				break;
-			case 2:
-				System.out.print("Enter flight number: ");
-				int selectedFlightNumber = input.nextInt();
-				Flight selectedFlight = flightDB.getFlight(selectedFlightNumber);
-				if(selectedFlight == null) {
-					System.out.println("Flight number is not valid");
-					break;
-				}
-				System.out.println(selectedFlight);
+			// try-catch to avoid crashing at runtime
+			try{
+				displayMenu();
+				int keyInt = input.nextInt();
 				
-				System.out.print("Enter empty seat number: ");
-				int selectedSeatNumber = input.nextInt();
-				input.nextLine();
-				Seat selectedSeat = selectedFlight.getPassengerSeat(selectedSeatNumber);
-				if (selectedSeat != null && selectedSeat.isSeatAvailability()) {
-					System.out.print("Enter Name: ");
-					String nameEntered = input.nextLine();
-					System.out.print("Enter Address: ");
-					String addressEntered = input.nextLine();
-					System.out.print("Enter Phone Number: ");
-					String phoneNumberEntered = input.nextLine();
-
-					Passenger userPassenger = new Passenger(nameEntered, addressEntered, phoneNumberEntered);
-					System.out.println(userPassenger);
-					selectedFlight.setPassengerSeat(userPassenger, selectedSeatNumber);
-					System.out.println("Added to flight number: " + selectedFlightNumber);
-				} else {
-					System.out.println("Seat is not available");
-				}
-				break;
-			case 3:
-				System.out.print("Enter flight number: ");
-				selectedFlightNumber = input.nextInt();
-				selectedFlight = flightDB.getFlight(selectedFlightNumber);
-				if(selectedFlight == null) {
-					System.out.println("Flight number is not valid");
+				switch (keyInt) {
+				case 0:
+					exitFlag = true;
+					System.out.println("You have exited the program");
 					break;
-				}
-				System.out.println(selectedFlight);
-				System.out.print("Enter occupied seat number: ");
-				selectedSeatNumber = input.nextInt();
-				input.nextLine();
-				selectedSeat = selectedFlight.getPassengerSeat(selectedSeatNumber);
-				if (selectedSeat.isSeatAvailability()) {
-					System.out.println("No passenger occupies seat number: " + selectedSeatNumber);
-				} else {
-					selectedFlight.deletePassenger(selectedSeatNumber);
-				}
-				break;
-			case 4:
-				System.out.print("Enter flight number: ");
-				selectedFlightNumber = input.nextInt();
-				selectedFlight = flightDB.getFlight(selectedFlightNumber);
-				if(selectedFlight == null) {
-					System.out.println("Flight number is not valid");
+				case 1:
+				progressBar.loadBar();
+					System.out.print("Enter 3 digit airport code for origin (Ex.ATL): ");
+					String originAirportCode = input.next();
+					System.out.print("Enter 3 digit airport code for destination (Ex.MCO): ");
+					String destinationAirportCode = input.next();
+
+					ArrayList<Flight> matchedFlights = searchFlights(flightDB, originAirportCode, destinationAirportCode);
+					if (matchedFlights.size() == 0) {
+						System.out.println("No flights available");
+					} else {
+						System.out.println("Available Flights: ");
+						for (int i = 0; i < matchedFlights.size(); i++) { 
+							System.out.println("\t" + matchedFlights.get(i).getFlightNumber() + " "
+									+ matchedFlights.get(i).getOrigin().getAirportName() + " -> "
+									+ matchedFlights.get(i).getDestination().getAirportName() + " "
+									+ matchedFlights.get(i).getDepartureTime());
+						}
+					}
 					break;
+				case 2:
+					progressBar.loadBar();
+					System.out.print("Enter flight number: ");
+					int selectedFlightNumber = input.nextInt();
+					Flight selectedFlight = flightDB.getFlight(selectedFlightNumber);
+					if(selectedFlight == null) {
+						System.out.println("Flight number is not valid");
+						break;
+					}
+					System.out.println(selectedFlight);
+					
+					System.out.print("Enter empty seat number: ");
+					int selectedSeatNumber = input.nextInt();
+					input.nextLine();
+					Seat selectedSeat = selectedFlight.getPassengerSeat(selectedSeatNumber);
+					if (selectedSeat != null && selectedSeat.isSeatAvailability()) {
+						System.out.print("Enter Name: ");
+						String nameEntered = input.nextLine();
+						System.out.print("Enter Address: ");
+						String addressEntered = input.nextLine();
+						System.out.print("Enter Phone Number: ");
+						String phoneNumberEntered = input.nextLine();
+
+						Passenger userPassenger = new Passenger(nameEntered, addressEntered, phoneNumberEntered);
+						System.out.println(userPassenger);
+						selectedFlight.setPassengerSeat(userPassenger, selectedSeatNumber);
+						System.out.println("Added to flight number: " + selectedFlightNumber);
+					} else {
+						System.out.println("Seat is not available");
+					}
+					break;
+				case 3:
+				progressBar.loadBar();
+					System.out.print("Enter flight number: ");
+					selectedFlightNumber = input.nextInt();
+					selectedFlight = flightDB.getFlight(selectedFlightNumber);
+					if(selectedFlight == null) {
+						System.out.println("Flight number is not valid");
+						break;
+					}
+					System.out.println(selectedFlight);
+					System.out.print("Enter occupied seat number: ");
+					selectedSeatNumber = input.nextInt();
+					input.nextLine();
+					selectedSeat = selectedFlight.getPassengerSeat(selectedSeatNumber);
+					if (selectedSeat.isSeatAvailability()) {
+						System.out.println("No passenger occupies seat number: " + selectedSeatNumber);
+					} else {
+						selectedFlight.deletePassenger(selectedSeatNumber);
+					}
+					break;
+				case 4:
+					progressBar.loadBar();
+					System.out.print("Enter flight number: ");
+					selectedFlightNumber = input.nextInt();
+					selectedFlight = flightDB.getFlight(selectedFlightNumber);
+					if(selectedFlight == null) {
+						System.out.println("Flight number is not valid");
+						break;
+					}
+					System.out.println(selectedFlight);
+					break;
+
+				default:
+					System.out.println("Input not recognized!!! \n");
+
 				}
-				System.out.println(selectedFlight);
-				break;
-
-			default:
-				System.out.println("Input not recognized");
-
-			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(" Invalid input !!! \n");
+			String errorLog = input.next();
 		}
+		}
+		
 
 
 
