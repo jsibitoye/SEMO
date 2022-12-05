@@ -12,19 +12,21 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 // commit test to see synch by josh ###########
-// line 2
 public class MainMenu {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		// switch case for Add New Flight, Delete a Flight, Book a Flight, Cancel a
 		// Flight, View Available Flights, View Passenger Info
 		FlightDatabase flightDB = new FlightDatabase();
+		ProgressBar progressBar = new ProgressBar();
 		flightDB.initializeFlights();
 		Scanner input = new Scanner(System.in);
 		boolean exitFlag = false;
+		System.out.println("\nWELCOME TO CS-500 FLIGHT MANAGEMENT SYSTEM\n");
 		while (exitFlag == false) {
 			displayMenu();
 			int keyInt = input.nextInt();
+			progressBar.loadBar();;
 			switch (keyInt) {
 			case 0:
 				exitFlag = true;
@@ -115,6 +117,8 @@ public class MainMenu {
 			}
 		}
 
+
+
 	}
 
 	public static ArrayList<Flight> searchFlights(FlightDatabase flightDB, String originAirportCode,
@@ -130,5 +134,6 @@ public class MainMenu {
 		System.out.println("\t2: Add passenger to flight");
 		System.out.println("\t3: Delete passenger from flight");
 		System.out.println("\t4: Display flight info for flight number");
+		System.out.print("input: ");
 	}
 }
