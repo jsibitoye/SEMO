@@ -18,7 +18,7 @@ public class MainMenu {
 						"\n 3. Delete passenger from flight\n 4. Display flight info for flight number\n 5. Exit", "Flight Reservation", 3);
 
 				if (input == null) {
-					System.out.println("You have exited the program.");
+					JOptionPane.showMessageDialog(null, "GoodBye!", "Exit", 1);
 					System.exit(0);
 				}
 				else {
@@ -40,7 +40,8 @@ public class MainMenu {
 
 								ArrayList<Flight> matchedFlights = searchFlights(flightDB, originAirportCode, destinationAirportCode);
 								if (matchedFlights.size() == 0) {
-									System.out.println("No flights available");
+									JOptionPane.showMessageDialog(null, "No flights available", "ERROR", 2);
+
 								}
 								else {
 									System.out.println("Available Flights: ");
@@ -64,6 +65,7 @@ public class MainMenu {
 						int selectedFlightNumber = Integer.parseInt(flightInput);
 						Flight selectedFlight = flightDB.getFlight(selectedFlightNumber);
 						if (selectedFlight == null) {
+							JOptionPane.showMessageDialog(null, "Flight number is not valid", "ERROR", 2);
 							System.out.println("Flight number is not valid");
 							break;
 						}
@@ -98,7 +100,8 @@ public class MainMenu {
 							selectedFlight.setPassengerSeat(userPassenger, selectedSeatNumber);
 							System.out.println("Added to flight number: " + selectedFlightNumber);
 						} else {
-							System.out.println("Seat is not available");
+							JOptionPane.showMessageDialog(null, "Seat is not available", "ERROR", 2);
+							//System.out.println("Seat is not available");
 						}
 						break;
 					case 3:
@@ -110,7 +113,8 @@ public class MainMenu {
 						selectedFlightNumber = Integer.parseInt(flightInput);
 						selectedFlight = flightDB.getFlight(selectedFlightNumber);
 						if (selectedFlight == null) {
-							System.out.println("Flight number is not valid");
+							JOptionPane.showMessageDialog(null, "Flight number is not valid", "ERROR", 2);
+							//System.out.println("Flight number is not valid");
 							break;
 						}
 						System.out.println(selectedFlight);
@@ -139,13 +143,14 @@ public class MainMenu {
 						selectedFlightNumber = Integer.parseInt(flightInput);
 						selectedFlight = flightDB.getFlight(selectedFlightNumber);
 						if (selectedFlight == null) {
-							System.out.println("Flight number is not valid");
+							JOptionPane.showMessageDialog(null, "Flight number is not valid", "ERROR", 2);
+							//System.out.println("Flight number is not valid");
 							break;
 						}
 						System.out.println(selectedFlight);
 						break;
 					case 5:
-						System.out.println("You have exited the program");
+						JOptionPane.showMessageDialog(null, "GoodBye!", "Exit", 1);
 						System.exit(5);
 					default:
 						JOptionPane.showMessageDialog(null, "Please enter the number of one of " +
