@@ -17,7 +17,13 @@ public class MainMenu {
 				String input = JOptionPane.showInputDialog(" \n Please choose an option" + "\n 1. Search for flights" +
 						"\n 2. Add Passenger to Flight" + "\n 3. Delete passenger from flight" +
 						"\n 4. Display flight info for flight number" + "\n 5. Exit");
-				int keyInt = Integer.parseInt(input);
+
+				if (input == null) {
+					System.out.println("You have exited the program.");
+					System.exit(0);
+				}
+				else {
+					int keyInt = Integer.parseInt(input);
 
 				switch (keyInt) {
 					case 1:
@@ -97,10 +103,10 @@ public class MainMenu {
 						break;
 					case 5:
 						System.out.println("You have exited the program");
-						System.exit(0);
-
+						System.exit(5);
 					default:
 						System.out.println("Input not recognized!!! \n");
+				}
 
 				}
 			} catch (Exception e) {
