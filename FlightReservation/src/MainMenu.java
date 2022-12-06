@@ -67,28 +67,28 @@ public class MainMenu {
 						break;
 					case 3:
 						progressBar.loadBar();
-						String flightInput2 = JOptionPane.showInputDialog("Enter flight number: ");
-						int selectedFlightNumber2 = Integer.parseInt(flightInput2);
-						selectedFlight = flightDB.getFlight(selectedFlightNumber2);
+						flightInput = JOptionPane.showInputDialog("Enter flight number: ");
+						selectedFlightNumber = Integer.parseInt(flightInput);
+						selectedFlight = flightDB.getFlight(selectedFlightNumber);
 						if (selectedFlight == null) {
 							System.out.println("Flight number is not valid");
 							break;
 						}
 						System.out.println(selectedFlight);
-						String seatInput2 = JOptionPane.showInputDialog("Enter occupied seat number: ");
-						int selectedSeatNumber2 = Integer.parseInt(seatInput2);
-						selectedSeat = selectedFlight.getPassengerSeat(selectedSeatNumber2);
+						seatInput = JOptionPane.showInputDialog("Enter occupied seat number: ");
+						selectedSeatNumber = Integer.parseInt(seatInput);
+						selectedSeat = selectedFlight.getPassengerSeat(selectedSeatNumber);
 						if (selectedSeat.isSeatAvailability()) {
-							System.out.println("No passenger occupies seat number: " + selectedSeatNumber2);
+							System.out.println("No passenger occupies seat number: " + selectedSeatNumber);
 						} else {
-							selectedFlight.deletePassenger(selectedSeatNumber2);
+							selectedFlight.deletePassenger(selectedSeatNumber);
 						}
 						break;
 					case 4:
 						progressBar.loadBar();
-						String flightInput3 = JOptionPane.showInputDialog("Enter flight number: ");
-						int selectedFlightNumber3 = Integer.parseInt(flightInput3);
-						selectedFlight = flightDB.getFlight(selectedFlightNumber3);
+						flightInput = JOptionPane.showInputDialog("Enter flight number: ");
+						selectedFlightNumber = Integer.parseInt(flightInput);
+						selectedFlight = flightDB.getFlight(selectedFlightNumber);
 						if (selectedFlight == null) {
 							System.out.println("Flight number is not valid");
 							break;
