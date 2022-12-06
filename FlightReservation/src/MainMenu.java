@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// commit test to see synch by josh ###########
+// commit test to see sync by josh ###########
 public class MainMenu {
 
 	public static void main(String[] args) throws InterruptedException {
@@ -61,7 +61,6 @@ public class MainMenu {
 						if (flightInput.length() == 0) { JOptionPane.showMessageDialog(null,
 								"Invalid input", "ERROR", JOptionPane.ERROR_MESSAGE);
 							break; }
-						if(flightInput.length() == 0 ) { break; }
 						int selectedFlightNumber = Integer.parseInt(flightInput);
 						Flight selectedFlight = flightDB.getFlight(selectedFlightNumber);
 						if (selectedFlight == null) {
