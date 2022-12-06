@@ -14,8 +14,8 @@ public class MainMenu {
 			// try-catch to avoid crashing at runtime
 			try {
 				System.out.println("\nWELCOME TO CS-500 FLIGHT MANAGEMENT SYSTEM\n");
-				String input = JOptionPane.showInputDialog(" \n Please choose an option \n 1. Search for flights\n 2. Add Passenger to Flight" +
-						"\n 3. Delete passenger from flight\n 4. Display flight info for flight number\n 5. Exit");
+				String input = JOptionPane.showInputDialog(null, " \n Please choose an option \n 1. Search for flights\n 2. Add Passenger to Flight" +
+						"\n 3. Delete passenger from flight\n 4. Display flight info for flight number\n 5. Exit", "Flight Reservation", 3);
 
 				if (input == null) {
 					System.out.println("You have exited the program.");
@@ -27,12 +27,12 @@ public class MainMenu {
 				switch (keyInt) {
 					case 1:
 						progressBar.loadBar();
-						String originAirportCode = JOptionPane.showInputDialog(" \n Enter 3 digit airport code for origin (Ex. ATL):");
+						String originAirportCode = JOptionPane.showInputDialog(null, " \n Enter 3 digit airport code for origin (Ex. ATL):", "Flight Info", 3);
 						if (originAirportCode == null) { break; }
 						if (originAirportCode.length() == 0) { JOptionPane.showMessageDialog(null,
 								"Invalid input", "ERROR", JOptionPane.ERROR_MESSAGE);
 							break; }
-						String destinationAirportCode = JOptionPane.showInputDialog(" \n Enter 3 digit airport code for destination (Ex. MCO):");
+						String destinationAirportCode = JOptionPane.showInputDialog(null, " \n Enter 3 digit airport code for destination (Ex. MCO):", "Flight Info", 3);
 						if (destinationAirportCode == null) { break; }
 						if (destinationAirportCode.length() == 0) { JOptionPane.showMessageDialog(null,
 								"Invalid input", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -56,7 +56,7 @@ public class MainMenu {
 						break;
 					case 2:
 						progressBar.loadBar();
-						String flightInput = JOptionPane.showInputDialog("Enter flight number: ");
+						String flightInput = JOptionPane.showInputDialog(null, "Enter flight number: ", "Flight Info", 3);
 						if (flightInput == null) { break; }
 						if (flightInput.length() == 0) { JOptionPane.showMessageDialog(null,
 								"Invalid input", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -69,7 +69,7 @@ public class MainMenu {
 						}
 						System.out.println(selectedFlight);
 
-						String seatInput = JOptionPane.showInputDialog("Enter empty seat number: ");
+						String seatInput = JOptionPane.showInputDialog(null, "Enter empty seat number: ", "Seat Info", 3);
 						if (seatInput == null) { break; }
 						if (seatInput.length() == 0) { JOptionPane.showMessageDialog(null,
 								"Invalid input", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -77,17 +77,17 @@ public class MainMenu {
 						int selectedSeatNumber = Integer.parseInt(seatInput);
 						Seat selectedSeat = selectedFlight.getPassengerSeat(selectedSeatNumber);
 						if (selectedSeat != null && selectedSeat.isSeatAvailability()) {
-							String nameEntered = JOptionPane.showInputDialog("Enter name: ");
+							String nameEntered = JOptionPane.showInputDialog(null, "Enter name: ", "Passenger Info", 3);
 							if (nameEntered == null) { break; }
 							if (nameEntered.length() == 0) { JOptionPane.showMessageDialog(null,
 									"Invalid input", "ERROR", JOptionPane.ERROR_MESSAGE);
 								break; }
-							String addressEntered = JOptionPane.showInputDialog("Enter address: ");
+							String addressEntered = JOptionPane.showInputDialog(null, "Enter address: ", "Passenger Info", 3);
 							if (addressEntered == null) { break; }
 							if (addressEntered.length() == 0) { JOptionPane.showMessageDialog(null,
 									"Invalid input", "ERROR", JOptionPane.ERROR_MESSAGE);
 								break; }
-							String phoneNumberEntered = JOptionPane.showInputDialog("Enter phone number: ");
+							String phoneNumberEntered = JOptionPane.showInputDialog(null, "Enter phone number: ", "Passenger Info", 3);
 							if(phoneNumberEntered == null) { break; }
 							if (phoneNumberEntered.length() == 0) { JOptionPane.showMessageDialog(null,
 									"Invalid input", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -103,7 +103,7 @@ public class MainMenu {
 						break;
 					case 3:
 						progressBar.loadBar();
-						flightInput = JOptionPane.showInputDialog("Enter flight number: ");
+						flightInput = JOptionPane.showInputDialog(null, "Enter flight number: ", "Flight Info", 3);
 						if (flightInput == null) {
 							break;
 						}
@@ -114,7 +114,7 @@ public class MainMenu {
 							break;
 						}
 						System.out.println(selectedFlight);
-						seatInput = JOptionPane.showInputDialog("Enter occupied seat number: ");
+						seatInput = JOptionPane.showInputDialog(null, "Enter occupied seat number: ", "Seat Info", 3);
 						if (seatInput == null) { break; }
 						if (seatInput.length() == 0) { JOptionPane.showMessageDialog(null,
 								"Invalid input", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -130,7 +130,7 @@ public class MainMenu {
 						break;
 					case 4:
 						progressBar.loadBar();
-						flightInput = JOptionPane.showInputDialog("Enter flight number: ");
+						flightInput = JOptionPane.showInputDialog(null, "Enter flight number: ", "Flight Info", 3);
 						if (flightInput == null) { break; }
 						if (flightInput.length() == 0) {
 							JOptionPane.showMessageDialog(null, "Invalid input", "ERROR",
