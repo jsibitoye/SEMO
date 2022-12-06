@@ -1,13 +1,4 @@
-
-//switch case for Add New Flight, Delete a Flight, Book a Flight, Cancel a Flight, View Available Flights, View Passenger Info
-/*switch
- * case0: run methods to create a new flight object and add it to data structure
- * case1: run methods to delete a flight from database
- * case2: run methods to create a passenger object and add to passenger database, then link with flight object in a database?
- * case3: run methods to delete link between passenger object and flight object database?
- * case4: run method to print all flight objects with corresponding info
- * case5: run method to print all passenger objects with corresponding personal info
- */
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -15,123 +6,109 @@ import java.util.Scanner;
 public class MainMenu {
 
 	public static void main(String[] args) throws InterruptedException {
-		// switch case for Add New Flight, Delete a Flight, Book a Flight, Cancel a
-		// Flight, View Available Flights, View Passenger Info
+		Scanner scan = new Scanner(System.in);
 		FlightDatabase flightDB = new FlightDatabase();
 		ProgressBar progressBar = new ProgressBar();
 		flightDB.initializeFlights();
-		Scanner input = new Scanner(System.in);
-		boolean exitFlag = false;
-		System.out.println("\nWELCOME TO CS-500 FLIGHT MANAGEMENT SYSTEM\n");
-		
-		
-		while (exitFlag == false) {
+		while (true) {
 			// try-catch to avoid crashing at runtime
-			try{
-				displayMenu();
-				int keyInt = input.nextInt();
-				
+			try {
+				System.out.println("\nWELCOME TO CS-500 FLIGHT MANAGEMENT SYSTEM\n");
+				String input = JOptionPane.showInputDialog(" \n Please choose an option" + "\n 1. Search for flights" +
+						"\n 2. Add Passenger to Flight" + "\n 3. Delete passenger from flight" +
+						"\n 4. Display flight info for flight number");
+				int keyInt = Integer.parseInt(input);
+
 				switch (keyInt) {
-				case 0:
-					exitFlag = true;
-					System.out.println("You have exited the program");
-					break;
-				case 1:
-				progressBar.loadBar();
-					System.out.print("Enter 3 digit airport code for origin (Ex.ATL): ");
-					String originAirportCode = input.next();
-					System.out.print("Enter 3 digit airport code for destination (Ex.MCO): ");
-					String destinationAirportCode = input.next();
+					case 0:
+						System.exit(0);
+					case 1:
+						progressBar.loadBar();
+						String originAirportCode = JOptionPane.showInputDialog(" \n Enter 3 digit airport code for origin (Ex. ATL):");
+						String destinationAirportCode = JOptionPane.showInputDialog(" \n Enter 3 digit airport code for destination (Ex. MCO):");
 
-					ArrayList<Flight> matchedFlights = searchFlights(flightDB, originAirportCode, destinationAirportCode);
-					if (matchedFlights.size() == 0) {
-						System.out.println("No flights available");
-					} else {
-						System.out.println("Available Flights: ");
-						for (int i = 0; i < matchedFlights.size(); i++) { 
-							System.out.println("\t" + matchedFlights.get(i).getFlightNumber() + " "
-									+ matchedFlights.get(i).getOrigin().getAirportName() + " -> "
-									+ matchedFlights.get(i).getDestination().getAirportName() + " "
-									+ matchedFlights.get(i).getDepartureTime());
+						ArrayList<Flight> matchedFlights = searchFlights(flightDB, originAirportCode, destinationAirportCode);
+						if (matchedFlights.size() == 0) {
+							System.out.println("No flights available");
+						} else {
+							System.out.println("Available Flights: ");
+							for (int i = 0; i < matchedFlights.size(); i++) {
+								System.out.println("\t" + matchedFlights.get(i).getFlightNumber() + " "
+										+ matchedFlights.get(i).getOrigin().getAirportName() + " -> "
+										+ matchedFlights.get(i).getDestination().getAirportName() + " "
+										+ matchedFlights.get(i).getDepartureTime());
+							}
 						}
-					}
-					break;
-				case 2:
-					progressBar.loadBar();
-					System.out.print("Enter flight number: ");
-					int selectedFlightNumber = input.nextInt();
-					Flight selectedFlight = flightDB.getFlight(selectedFlightNumber);
-					if(selectedFlight == null) {
-						System.out.println("Flight number is not valid");
 						break;
-					}
-					System.out.println(selectedFlight);
-					
-					System.out.print("Enter empty seat number: ");
-					int selectedSeatNumber = input.nextInt();
-					input.nextLine();
-					Seat selectedSeat = selectedFlight.getPassengerSeat(selectedSeatNumber);
-					if (selectedSeat != null && selectedSeat.isSeatAvailability()) {
-						System.out.print("Enter Name: ");
-						String nameEntered = input.nextLine();
-						System.out.print("Enter Address: ");
-						String addressEntered = input.nextLine();
-						System.out.print("Enter Phone Number: ");
-						String phoneNumberEntered = input.nextLine();
+					case 2:
+						progressBar.loadBar();
+						String flightInput = JOptionPane.showInputDialog("Enter flight number: ");
+						int selectedFlightNumber = Integer.parseInt(flightInput);
+						Flight selectedFlight = flightDB.getFlight(selectedFlightNumber);
+						if (selectedFlight == null) {
+							System.out.println("Flight number is not valid");
+							break;
+						}
+						System.out.println(selectedFlight);
 
-						Passenger userPassenger = new Passenger(nameEntered, addressEntered, phoneNumberEntered);
-						System.out.println(userPassenger);
-						selectedFlight.setPassengerSeat(userPassenger, selectedSeatNumber);
-						System.out.println("Added to flight number: " + selectedFlightNumber);
-					} else {
-						System.out.println("Seat is not available");
-					}
-					break;
-				case 3:
-				progressBar.loadBar();
-					System.out.print("Enter flight number: ");
-					selectedFlightNumber = input.nextInt();
-					selectedFlight = flightDB.getFlight(selectedFlightNumber);
-					if(selectedFlight == null) {
-						System.out.println("Flight number is not valid");
-						break;
-					}
-					System.out.println(selectedFlight);
-					System.out.print("Enter occupied seat number: ");
-					selectedSeatNumber = input.nextInt();
-					input.nextLine();
-					selectedSeat = selectedFlight.getPassengerSeat(selectedSeatNumber);
-					if (selectedSeat.isSeatAvailability()) {
-						System.out.println("No passenger occupies seat number: " + selectedSeatNumber);
-					} else {
-						selectedFlight.deletePassenger(selectedSeatNumber);
-					}
-					break;
-				case 4:
-					progressBar.loadBar();
-					System.out.print("Enter flight number: ");
-					selectedFlightNumber = input.nextInt();
-					selectedFlight = flightDB.getFlight(selectedFlightNumber);
-					if(selectedFlight == null) {
-						System.out.println("Flight number is not valid");
-						break;
-					}
-					System.out.println(selectedFlight);
-					break;
+						String seatInput = JOptionPane.showInputDialog("Enter empty seat number: ");
+						int selectedSeatNumber = Integer.parseInt(seatInput);
+						Seat selectedSeat = selectedFlight.getPassengerSeat(selectedSeatNumber);
+						if (selectedSeat != null && selectedSeat.isSeatAvailability()) {
+							String nameEntered = JOptionPane.showInputDialog("Enter name: ");
+							String addressEntered = JOptionPane.showInputDialog("Enter address: ");
+							String phoneNumberEntered = JOptionPane.showInputDialog("Enter phone number: ");
 
-				default:
-					System.out.println("Input not recognized!!! \n");
+							Passenger userPassenger = new Passenger(nameEntered, addressEntered, phoneNumberEntered);
+							System.out.println(userPassenger);
+							selectedFlight.setPassengerSeat(userPassenger, selectedSeatNumber);
+							System.out.println("Added to flight number: " + selectedFlightNumber);
+						} else {
+							System.out.println("Seat is not available");
+						}
+						break;
+					case 3:
+						progressBar.loadBar();
+						String flightInput2 = JOptionPane.showInputDialog("Enter flight number: ");
+						int selectedFlightNumber2 = Integer.parseInt(flightInput2);
+						selectedFlight = flightDB.getFlight(selectedFlightNumber2);
+						if (selectedFlight == null) {
+							System.out.println("Flight number is not valid");
+							break;
+						}
+						System.out.println(selectedFlight);
+						String seatInput2 = JOptionPane.showInputDialog("Enter occupied seat number: ");
+						int selectedSeatNumber2 = Integer.parseInt(seatInput2);
+						selectedSeat = selectedFlight.getPassengerSeat(selectedSeatNumber2);
+						if (selectedSeat.isSeatAvailability()) {
+							System.out.println("No passenger occupies seat number: " + selectedSeatNumber2);
+						} else {
+							selectedFlight.deletePassenger(selectedSeatNumber2);
+						}
+						break;
+					case 4:
+						progressBar.loadBar();
+						String flightInput3 = JOptionPane.showInputDialog("Enter flight number: ");
+						int selectedFlightNumber3 = Integer.parseInt(flightInput3);
+						selectedFlight = flightDB.getFlight(selectedFlightNumber3);
+						if (selectedFlight == null) {
+							System.out.println("Flight number is not valid");
+							break;
+						}
+						System.out.println(selectedFlight);
+						break;
+
+					default:
+						System.out.println("Input not recognized!!! \n");
 
 				}
-		} catch (Exception e) {
+			} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(" Invalid input !!! \n");
-			String errorLog = input.next();
+			String errorLog = scan.next();
 		}
+
 		}
-		
-
-
 
 	}
 
@@ -141,13 +118,4 @@ public class MainMenu {
 
 	}
 
-	public static void displayMenu() {
-		System.out.println("Enter Menu Selection");
-		System.out.println("\t0: Exit");
-		System.out.println("\t1: Search for flights");
-		System.out.println("\t2: Add passenger to flight");
-		System.out.println("\t3: Delete passenger from flight");
-		System.out.println("\t4: Display flight info for flight number");
-		System.out.print("input: ");
-	}
 }
