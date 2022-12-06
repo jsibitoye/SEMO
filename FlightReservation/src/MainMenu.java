@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class MainMenu {
 
 	public static void main(String[] args) throws InterruptedException {
-		Scanner scan = new Scanner(System.in);
+		//Scanner scan = new Scanner(System.in);
 		FlightDatabase flightDB = new FlightDatabase();
 		ProgressBar progressBar = new ProgressBar();
 		flightDB.initializeFlights();
@@ -14,9 +14,8 @@ public class MainMenu {
 			// try-catch to avoid crashing at runtime
 			try {
 				System.out.println("\nWELCOME TO CS-500 FLIGHT MANAGEMENT SYSTEM\n");
-				String input = JOptionPane.showInputDialog(" \n Please choose an option" + "\n 1. Search for flights" +
-						"\n 2. Add Passenger to Flight" + "\n 3. Delete passenger from flight" +
-						"\n 4. Display flight info for flight number" + "\n 5. Exit");
+				String input = JOptionPane.showInputDialog(" \n Please choose an option \n 1. Search for flights\n 2. Add Passenger to Flight" +
+						"\n 3. Delete passenger from flight\n 4. Display flight info for flight number\n 5. Exit");
 
 				if (input == null) {
 					System.out.println("You have exited the program.");

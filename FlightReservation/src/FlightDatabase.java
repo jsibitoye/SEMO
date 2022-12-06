@@ -89,18 +89,18 @@ public class FlightDatabase {
 		return matchedFlights;
 
 	}
-	//unused method
-	/*public void addPassenger(Passenger arbPass, int flightNumber, int seatNumber) {
+
+	public void addPassenger(Passenger arbPass, int flightNumber, int seatNumber) {
 		boolean seatFound = false;
 		int i = 0;
 		while (seatFound == false) {
-			if (flightNumber == flights.get(i).getFlightNumber()) {
-				flights.get(i).setPassengerSeat(arbPass, seatNumber);
+			if (flightNumber == availableFlights.get(i).getFlightNumber()) {
+				availableFlights.get(i).setPassengerSeat(arbPass, seatNumber);
 				seatFound = true;
 			}
 			i += 1;
 		}
-	}*/
+	}
 	public Flight getFlight(int flightNumber) {
 		for (int i = 0; i < availableFlights.size(); i++) {
 			if (flightNumber == availableFlights.get(i).getFlightNumber()) {
