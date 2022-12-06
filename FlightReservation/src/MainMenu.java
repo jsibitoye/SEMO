@@ -16,12 +16,10 @@ public class MainMenu {
 				System.out.println("\nWELCOME TO CS-500 FLIGHT MANAGEMENT SYSTEM\n");
 				String input = JOptionPane.showInputDialog(" \n Please choose an option" + "\n 1. Search for flights" +
 						"\n 2. Add Passenger to Flight" + "\n 3. Delete passenger from flight" +
-						"\n 4. Display flight info for flight number");
+						"\n 4. Display flight info for flight number" + "\n 5. Exit");
 				int keyInt = Integer.parseInt(input);
 
 				switch (keyInt) {
-					case 0:
-						System.exit(0);
 					case 1:
 						progressBar.loadBar();
 						String originAirportCode = JOptionPane.showInputDialog(" \n Enter 3 digit airport code for origin (Ex. ATL):");
@@ -97,6 +95,9 @@ public class MainMenu {
 						}
 						System.out.println(selectedFlight);
 						break;
+					case 5:
+						System.out.println("You have exited the program");
+						System.exit(0);
 
 					default:
 						System.out.println("Input not recognized!!! \n");
