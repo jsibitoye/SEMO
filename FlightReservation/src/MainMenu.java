@@ -15,9 +15,9 @@ public class MainMenu {
 		while (true) {
 			// try-catch to avoid crashing at runtime
 			try {
-				System.out.println("\nWELCOME TO CS-500 FLIGHT MANAGEMENT SYSTEM\n");
+				//System.out.println("\nWELCOME TO CS-500 FLIGHT MANAGEMENT SYSTEM\n");
 				String input = JOptionPane.showInputDialog(null, " \n Please choose an option \n 1. Search for flights\n 2. Add Passenger to Flight" +
-						"\n 3. Delete passenger from flight\n 4. Display flight info for flight number\n 5. Exit", "Flight Reservation", JOptionPane.PLAIN_MESSAGE);
+						"\n 3. Delete passenger from flight\n 4. Display flight info for flight number\n 5. Exit", "Main Menu", JOptionPane.PLAIN_MESSAGE);
 
 				if (input == null) {
 					JOptionPane.showMessageDialog(null, "GoodBye!", " ", JOptionPane.PLAIN_MESSAGE);
@@ -48,10 +48,14 @@ public class MainMenu {
 								else {
 									System.out.println("Available Flights: ");
 									for (int i = 0; i < matchedFlights.size(); i++) {
-										System.out.println("\t" + matchedFlights.get(i).getFlightNumber() + " "
+										JOptionPane.showMessageDialog(null, "\t" + matchedFlights.get(i).getFlightNumber() + " "
 												+ matchedFlights.get(i).getOrigin().getAirportName() + " -> "
 												+ matchedFlights.get(i).getDestination().getAirportName() + " "
-												+ matchedFlights.get(i).getDepartureTime());
+												+ matchedFlights.get(i).getDepartureTime(), " ", JOptionPane.PLAIN_MESSAGE);
+										/*System.out.println("\t" + matchedFlights.get(i).getFlightNumber() + " "
+												+ matchedFlights.get(i).getOrigin().getAirportName() + " -> "
+												+ matchedFlights.get(i).getDestination().getAirportName() + " "
+												+ matchedFlights.get(i).getDepartureTime());*/
 									}
 								}
 
@@ -68,10 +72,11 @@ public class MainMenu {
 						Flight selectedFlight = flightDB.getFlight(selectedFlightNumber);
 						if (selectedFlight == null) {
 							JOptionPane.showMessageDialog(null, "Flight number is not valid", "ERROR", JOptionPane.ERROR_MESSAGE);
-							System.out.println("Flight number is not valid");
+							//System.out.println("Flight number is not valid");
 							break;
 						}
-						System.out.println(selectedFlight);
+						JOptionPane.showMessageDialog(null, selectedFlight, " ", JOptionPane.PLAIN_MESSAGE);
+						//System.out.println(selectedFlight);
 
 						String seatInput = JOptionPane.showInputDialog(null, "Enter empty seat number: ", "Seat Info", JOptionPane.PLAIN_MESSAGE);
 						if (seatInput == null) { break; }
@@ -98,10 +103,9 @@ public class MainMenu {
 								break; }
 
 							Passenger userPassenger = new Passenger(nameEntered, addressEntered, phoneNumberEntered);
-							System.out.println(userPassenger);
+							JOptionPane.showMessageDialog(null, userPassenger + " added to flight", "", JOptionPane.PLAIN_MESSAGE);
+							//System.out.println(userPassenger);
 							selectedFlight.setPassengerSeat(userPassenger, selectedSeatNumber);
-							JOptionPane.showMessageDialog(null, "Passenger added to flight", "Flight Info",
-									JOptionPane.PLAIN_MESSAGE);
 							//System.out.println("Added to flight number: " + selectedFlightNumber);
 						} else {
 							JOptionPane.showMessageDialog(null, "Seat is not available", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -121,7 +125,8 @@ public class MainMenu {
 							//System.out.println("Flight number is not valid");
 							break;
 						}
-						System.out.println(selectedFlight);
+						JOptionPane.showMessageDialog(null, selectedFlight, " ", JOptionPane.PLAIN_MESSAGE);
+						//System.out.println(selectedFlight);
 						seatInput = JOptionPane.showInputDialog(null, "Enter occupied seat number: ", "Seat Info", JOptionPane.PLAIN_MESSAGE);
 						if (seatInput == null) { break; }
 						if (seatInput.length() == 0) { JOptionPane.showMessageDialog(null,
@@ -130,7 +135,8 @@ public class MainMenu {
 						selectedSeatNumber = Integer.parseInt(seatInput);
 						selectedSeat = selectedFlight.getPassengerSeat(selectedSeatNumber);
 						if (selectedSeat.isSeatAvailability()) {
-							System.out.println("No passenger occupies seat number: " + selectedSeatNumber);
+							JOptionPane.showMessageDialog(null, "No passenger occupies seat number: " + selectedSeatNumber, " ", JOptionPane.PLAIN_MESSAGE);
+							//System.out.println("No passenger occupies seat number: " + selectedSeatNumber);
 						} else {
 							JOptionPane.showMessageDialog(null, "Passenger Removed", "Flight Info",
 									JOptionPane.PLAIN_MESSAGE);
@@ -153,7 +159,8 @@ public class MainMenu {
 							//System.out.println("Flight number is not valid");
 							break;
 						}
-						System.out.println(selectedFlight);
+						JOptionPane.showMessageDialog(null, selectedFlight, " ", JOptionPane.PLAIN_MESSAGE);
+						//System.out.println(selectedFlight);
 						break;
 					case 5:
 						JOptionPane.showMessageDialog(null, "GoodBye!", " ", JOptionPane.PLAIN_MESSAGE);
