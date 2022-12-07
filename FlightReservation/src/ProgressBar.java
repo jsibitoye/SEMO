@@ -15,8 +15,8 @@ public class ProgressBar {
     }
 
     public void loadBar() throws InterruptedException{
-        for (int i = 0 ; i <= 100 ; i+=10) {
-            Thread.sleep(10);
+        for (int i = 0 ; i <= 100 ; i+=Math.random() *8) {
+            Thread.sleep(50);
             System.out.print(String.format("[%s]%d%%\r", progress(i), i));
         }
     }
