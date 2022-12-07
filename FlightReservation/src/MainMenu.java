@@ -46,12 +46,12 @@ public class MainMenu {
 
 								}
 								else {
-									System.out.println("Available Flights: ");
+									//System.out.println("Available Flights: ");
 									for (int i = 0; i < matchedFlights.size(); i++) {
 										JOptionPane.showMessageDialog(null, "\t" + matchedFlights.get(i).getFlightNumber() + " "
 												+ matchedFlights.get(i).getOrigin().getAirportName() + " -> "
 												+ matchedFlights.get(i).getDestination().getAirportName() + " "
-												+ matchedFlights.get(i).getDepartureTime(), " ", JOptionPane.PLAIN_MESSAGE);
+												+ matchedFlights.get(i).getDepartureTime(), "Available Flights", JOptionPane.PLAIN_MESSAGE);
 										/*System.out.println("\t" + matchedFlights.get(i).getFlightNumber() + " "
 												+ matchedFlights.get(i).getOrigin().getAirportName() + " -> "
 												+ matchedFlights.get(i).getDestination().getAirportName() + " "
