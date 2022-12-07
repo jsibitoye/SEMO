@@ -30,7 +30,7 @@ public class MainMenu {
 						case 1:
 							progressBar.loadBar();
 							String originAirportCode = JOptionPane.showInputDialog(null, " \n Enter 3 digit airport code for origin (Ex. ATL):", "Flight Info", JOptionPane.PLAIN_MESSAGE);
-							originAirportCode = originAirportCode.toUpperCase();
+
 							if (originAirportCode == null) {
 								break;
 							}
@@ -39,8 +39,9 @@ public class MainMenu {
 										"Invalid input", "ERROR", JOptionPane.ERROR_MESSAGE);
 								break;
 							}
+							originAirportCode = originAirportCode.toUpperCase();
 							String destinationAirportCode = JOptionPane.showInputDialog(null, " \n Enter 3 digit airport code for destination (Ex. MCO):", "Flight Info", JOptionPane.PLAIN_MESSAGE);
-							destinationAirportCode = destinationAirportCode.toUpperCase();
+
 							if (destinationAirportCode == null) {
 								break;
 							}
@@ -49,6 +50,7 @@ public class MainMenu {
 										"Invalid input", "ERROR", JOptionPane.ERROR_MESSAGE);
 								break;
 							}
+							destinationAirportCode = destinationAirportCode.toUpperCase();
 
 							ArrayList<Flight> matchedFlights = searchFlights(flightDB, originAirportCode, destinationAirportCode);
 							if (matchedFlights.size() == 0) {
@@ -184,6 +186,7 @@ public class MainMenu {
 						JOptionPane.showMessageDialog(null, selectedFlight, " ", JOptionPane.PLAIN_MESSAGE);
 						//System.out.println(selectedFlight);
 						break;
+
 					default:
 						JOptionPane.showMessageDialog(null, "Please enter the number of one of " +
 								"the given options", "ERROR", JOptionPane.ERROR_MESSAGE);
