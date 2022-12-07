@@ -14,6 +14,8 @@ public class FlightDatabase {
 		Airport boston = new Airport("Boston", "USA", "BOS");
 		Airport atlanta = new Airport("Atlanta", "USA", "ATL");
 		Airport orlando = new Airport("Orlando", "USA", "MCO");
+		Airport Bamako = new Airport("Bamako", "Mali", "BAM");
+		Airport Houston = new Airport("Houston", "USA", "HOU");
 		Passenger[] fakePassengers = new Passenger[4];
 		fakePassengers[0] = new Passenger("Ricky Bobby", "1 Fast st", "3216964587");
 		fakePassengers[1] = new Passenger("Tyler Blankenship", "2 Fast st", "3216964588");
@@ -75,7 +77,17 @@ public class FlightDatabase {
 			}
 			availableFlights.add(flight4);
 		}
-
+		for (int i = 0; i < 5; i++) {
+			myCal.set(Calendar.HOUR, i + 2);
+			departureTime = myCal.getTime();
+			myCal.set(Calendar.HOUR, i + 8);
+			arrivalTime = myCal.getTime();
+			Flight flight4 = new Flight(80046 + i, Bamako, Houston, departureTime, arrivalTime, numOfSeats);
+			for( int j = 0; j < fakePassengers.length; j++ ) {
+				flight4.setPassengerSeat(fakePassengers[j], j + 1);
+			}
+			availableFlights.add(flight4);
+		}
 	}
 
 	public ArrayList<Flight> getFlights(String originAirportName, String destinationAirportName) {
