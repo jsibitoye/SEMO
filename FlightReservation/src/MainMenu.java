@@ -30,7 +30,7 @@ public class MainMenu {
 						case 1:
 							progressBar.loadBar();
 							String originAirportCode = JOptionPane.showInputDialog(null, " \n Enter 3 digit airport code for origin (Ex. ATL):", "Flight Info", JOptionPane.PLAIN_MESSAGE);
-							//originAirportCode.toUpperCase();
+							originAirportCode = originAirportCode.toUpperCase();
 							if (originAirportCode == null) {
 								break;
 							}
@@ -40,7 +40,7 @@ public class MainMenu {
 								break;
 							}
 							String destinationAirportCode = JOptionPane.showInputDialog(null, " \n Enter 3 digit airport code for destination (Ex. MCO):", "Flight Info", JOptionPane.PLAIN_MESSAGE);
-							//destinationAirportCode.toUpperCase();
+							destinationAirportCode = destinationAirportCode.toUpperCase();
 							if (destinationAirportCode == null) {
 								break;
 							}
