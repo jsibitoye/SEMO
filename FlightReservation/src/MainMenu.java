@@ -17,7 +17,7 @@ public class MainMenu {
 			try {
 				//System.out.println("\nWELCOME TO CS-500 FLIGHT MANAGEMENT SYSTEM\n");
 				String input = JOptionPane.showInputDialog(null, " \n Please choose an option \n 1. Search for flights\n 2. Add Passenger to Flight" +
-						"\n 3. Delete passenger from flight\n 4. Display flight info for flight number\n 5. Exit", "Main Menu", JOptionPane.PLAIN_MESSAGE);
+						"\n 3. Delete passenger from flight\n 4. Display flight info for flight number", "Main Menu", JOptionPane.PLAIN_MESSAGE);
 
 				if (input == null) {
 					JOptionPane.showMessageDialog(null, "GoodBye!", " ", JOptionPane.PLAIN_MESSAGE);
@@ -26,38 +26,60 @@ public class MainMenu {
 				else {
 					int keyInt = Integer.parseInt(input);
 
-				switch (keyInt) {
-					case 1:
-						progressBar.loadBar();
-						String originAirportCode = JOptionPane.showInputDialog(null, " \n Enter 3 digit airport code for origin (Ex. ATL):", "Flight Info", JOptionPane.PLAIN_MESSAGE);
-						if (originAirportCode == null) { break; }
-						if (originAirportCode.length() == 0) { JOptionPane.showMessageDialog(null,
-								"Invalid input", "ERROR", JOptionPane.ERROR_MESSAGE);
-							break; }
-						String destinationAirportCode = JOptionPane.showInputDialog(null, " \n Enter 3 digit airport code for destination (Ex. MCO):", "Flight Info", JOptionPane.PLAIN_MESSAGE);
-						if (destinationAirportCode == null) { break; }
-						if (destinationAirportCode.length() == 0) { JOptionPane.showMessageDialog(null,
-								"Invalid input", "ERROR", JOptionPane.ERROR_MESSAGE);
-							break; }
+					switch (keyInt) {
+						case 1:
+							progressBar.loadBar();
+							String originAirportCode = JOptionPane.showInputDialog(null, " \n Enter 3 digit airport code for origin (Ex. ATL):", "Flight Info", JOptionPane.PLAIN_MESSAGE);
+							//originAirportCode.toUpperCase();
+							if (originAirportCode == null) {
+								break;
+							}
+							if (originAirportCode.length() == 0) {
+								JOptionPane.showMessageDialog(null,
+										"Invalid input", "ERROR", JOptionPane.ERROR_MESSAGE);
+								break;
+							}
+							String destinationAirportCode = JOptionPane.showInputDialog(null, " \n Enter 3 digit airport code for destination (Ex. MCO):", "Flight Info", JOptionPane.PLAIN_MESSAGE);
+							//destinationAirportCode.toUpperCase();
+							if (destinationAirportCode == null) {
+								break;
+							}
+							if (destinationAirportCode.length() == 0) {
+								JOptionPane.showMessageDialog(null,
+										"Invalid input", "ERROR", JOptionPane.ERROR_MESSAGE);
+								break;
+							}
 
-								ArrayList<Flight> matchedFlights = searchFlights(flightDB, originAirportCode, destinationAirportCode);
-								if (matchedFlights.size() == 0) {
-									JOptionPane.showMessageDialog(null, "No flights available", "ERROR", JOptionPane.ERROR_MESSAGE);
+							ArrayList<Flight> matchedFlights = searchFlights(flightDB, originAirportCode, destinationAirportCode);
+							if (matchedFlights.size() == 0) {
+								JOptionPane.showMessageDialog(null, "No flights available", "ERROR", JOptionPane.ERROR_MESSAGE);
 
-								}
-								else {
-									//System.out.println("Available Flights: ");
-									for (int i = 0; i < matchedFlights.size(); i++) {
-										JOptionPane.showMessageDialog(null, "\t" + matchedFlights.get(i).getFlightNumber() + " "
-												+ matchedFlights.get(i).getOrigin().getAirportName() + " -> "
-												+ matchedFlights.get(i).getDestination().getAirportName() + " "
-												+ matchedFlights.get(i).getDepartureTime(), "Available Flights", JOptionPane.PLAIN_MESSAGE);
+							} else {
+								//System.out.println("Available Flights: ");
+								//for (int i = 0; i < matchedFlights.size(); i++) {
+								JOptionPane.showMessageDialog(null,  matchedFlights.get(0).getFlightNumber() + " "
+										+ matchedFlights.get(0).getOrigin().getAirportName() + " -> "
+										+ matchedFlights.get(0).getDestination().getAirportName() + " "
+										+ matchedFlights.get(0).getDepartureTime()+ "\n" + matchedFlights.get(1).getFlightNumber() + " "
+										+ matchedFlights.get(1).getOrigin().getAirportName() + " -> "
+										+ matchedFlights.get(1).getDestination().getAirportName() + " "
+										+ matchedFlights.get(1).getDepartureTime()+ "\n" + matchedFlights.get(2).getFlightNumber() + " "
+										+ matchedFlights.get(2).getOrigin().getAirportName() + " -> "
+										+ matchedFlights.get(2).getDestination().getAirportName() + " "
+										+ matchedFlights.get(2).getDepartureTime()+ "\n" + matchedFlights.get(3).getFlightNumber() + " "
+										+ matchedFlights.get(3).getOrigin().getAirportName() + " -> "
+										+ matchedFlights.get(3).getDestination().getAirportName() + " "
+										+ matchedFlights.get(3).getDepartureTime()+ "\n" + matchedFlights.get(4).getFlightNumber() + " "
+										+ matchedFlights.get(4).getOrigin().getAirportName() + " -> "
+										+ matchedFlights.get(4).getDestination().getAirportName() + " "
+										+ matchedFlights.get(4).getDepartureTime(), "Available Flights", JOptionPane.PLAIN_MESSAGE);
 										/*System.out.println("\t" + matchedFlights.get(i).getFlightNumber() + " "
 												+ matchedFlights.get(i).getOrigin().getAirportName() + " -> "
 												+ matchedFlights.get(i).getDestination().getAirportName() + " "
 												+ matchedFlights.get(i).getDepartureTime());*/
-									}
-								}
+							//}
+					}
+
 
 
 						break;
@@ -162,9 +184,6 @@ public class MainMenu {
 						JOptionPane.showMessageDialog(null, selectedFlight, " ", JOptionPane.PLAIN_MESSAGE);
 						//System.out.println(selectedFlight);
 						break;
-					case 5:
-						JOptionPane.showMessageDialog(null, "GoodBye!", " ", JOptionPane.PLAIN_MESSAGE);
-						System.exit(5);
 					default:
 						JOptionPane.showMessageDialog(null, "Please enter the number of one of " +
 								"the given options", "ERROR", JOptionPane.ERROR_MESSAGE);
