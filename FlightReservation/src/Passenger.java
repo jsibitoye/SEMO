@@ -3,7 +3,7 @@ public class Passenger {
 	private String passengerName;
 	private String address;
 	private String phoneNumber;
-	private  String idNumber;
+	private String idNumber;
 	
 	Passenger(String passengerName, String address, String phoneNumber, String idNumber) {
 		this.passengerName = passengerName;
