@@ -1,17 +1,19 @@
-
+// This is the passenger info class
 public class Passenger {
 	private String passengerName;
 	private String address;
 	private String phoneNumber;
 	private String idNumber;
 	
+	//Constructor
 	Passenger(String passengerName, String address, String phoneNumber, String idNumber) {
 		this.passengerName = passengerName;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		this.idNumber = idNumber;
 	}
-
+	
+	// Accsessor methods
 	public String getPassengerName() { 
 		return passengerName;
 	}

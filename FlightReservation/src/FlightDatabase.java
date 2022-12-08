@@ -4,11 +4,10 @@ import java.util.Date;
 
 public class FlightDatabase {
 
+	// This data member is an arrayList used as an available flights database
 	private ArrayList<Flight> availableFlights = new ArrayList<>();
 
-	public void addFlight(Flight flight) {
-		}
-
+	// This is a method that initializes flights and passengers
 	public void initializeFlights() {
 		Airport austin = new Airport("Austin", "USA", "AUS");
 		Airport boston = new Airport("Boston", "USA", "BOS");
@@ -90,6 +89,7 @@ public class FlightDatabase {
 		}
 	}
 
+	// This method returns an array list of flights that match origin and destination
 	public ArrayList<Flight> getFlights(String originAirportName, String destinationAirportName) {
 		ArrayList<Flight> matchedFlights = new ArrayList<>();
 		for (int i = 0; i < availableFlights.size(); i++) {
@@ -101,7 +101,8 @@ public class FlightDatabase {
 		return matchedFlights;
 
 	}
-
+	
+	// This method adds a passenger to a specific flight number and seat number
 	public void addPassenger(Passenger arbPass, int flightNumber, int seatNumber) {
 		boolean seatFound = false;
 		int i = 0;
@@ -113,6 +114,8 @@ public class FlightDatabase {
 			i += 1;
 		}
 	}
+	
+	// This method returns a flight for the given a flight number
 	public Flight getFlight(int flightNumber) {
 		for (int i = 0; i < availableFlights.size(); i++) {
 			if (flightNumber == availableFlights.get(i).getFlightNumber()) {

@@ -27,6 +27,7 @@ public class MainMenu {
 
 					switch (keyInt) {
 					case 1:
+						// This is the search flight case
 						progressBar.loadBar();
 						String originAirportCode = JOptionPane.showInputDialog(null,
 								" \n Enter 3 digit airport code for origin (Ex. ATL):", "Flight Info",
@@ -73,6 +74,7 @@ public class MainMenu {
 
 						break;
 					case 2:
+						// This is the adding a passenger to a flight case
 						progressBar.loadBar();
 						String flightInput = JOptionPane.showInputDialog(null, "Enter flight number: ", "Flight Info",
 								JOptionPane.PLAIN_MESSAGE);
@@ -155,6 +157,7 @@ public class MainMenu {
 						}
 						break;
 					case 3:
+						// This is a delete a passenger from a flight case
 						progressBar.loadBar();
 						flightInput = JOptionPane.showInputDialog(null, "Enter flight number: ", "Flight Info",
 								JOptionPane.PLAIN_MESSAGE);
@@ -191,6 +194,7 @@ public class MainMenu {
 						}
 						break;
 					case 4:
+						// This is a the display flight case 
 						progressBar.loadBar();
 						flightInput = JOptionPane.showInputDialog(null, "Enter flight number: ", "Flight Info",
 								JOptionPane.PLAIN_MESSAGE);
@@ -225,7 +229,8 @@ public class MainMenu {
 		}
 
 	}
-
+	
+	// This is a method that returns an array of matched flights
 	public static ArrayList<Flight> searchFlights(FlightDatabase flightDB, String originAirportCode,
 			String destinationAirportCode) {
 		return flightDB.getFlights(originAirportCode, destinationAirportCode);

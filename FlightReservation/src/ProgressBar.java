@@ -1,3 +1,4 @@
+// This class creates the progress bar and prints to the console
 public class ProgressBar {
     
     private static final StringBuilder res = new StringBuilder();

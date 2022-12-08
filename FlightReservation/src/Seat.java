@@ -1,14 +1,16 @@
-
+// This class contains seat number and passenger info
 public class Seat {
 
 	private int seatNumber;
 	private Passenger passengerInfo;
 
+	// Constructor
 	Seat(int seatNumber) {
 		this.seatNumber = seatNumber;
 		this.passengerInfo = null;
 	}
 
+	// Accsessor methods
 	public int getSeatNumber() {
 		return seatNumber;
 	}

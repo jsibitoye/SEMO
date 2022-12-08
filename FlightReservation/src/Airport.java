@@ -4,12 +4,14 @@ public class Airport {
 	private String city;
 	private String country;
 
+	// Constructor 
 	Airport(String city, String country, String airportName) {
 		this.city = city;
 		this.country = country;
 		this.airportName = airportName;
 	}
 
+	// Accsessor methods
 	public String getCity() {
 		return city;
 	}
