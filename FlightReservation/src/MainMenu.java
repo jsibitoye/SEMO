@@ -125,8 +125,12 @@ public class MainMenu {
 							if (phoneNumberEntered.length() == 0) { JOptionPane.showMessageDialog(null,
 									"Invalid input", "ERROR", JOptionPane.ERROR_MESSAGE);
 								break; }
-
-							Passenger userPassenger = new Passenger(nameEntered, addressEntered, phoneNumberEntered);
+							String idNumberEntered = JOptionPane.showInputDialog(null, "Enter id number: ", "Passenger Info", JOptionPane.PLAIN_MESSAGE);
+							if(idNumberEntered == null) { break; }
+							if (idNumberEntered.length() == 0) { JOptionPane.showMessageDialog(null,
+									"Invalid input", "ERROR", JOptionPane.ERROR_MESSAGE);
+								break; }
+							Passenger userPassenger = new Passenger(nameEntered, addressEntered, phoneNumberEntered, idNumberEntered);
 							JOptionPane.showMessageDialog(null, userPassenger + " added to flight", "", JOptionPane.PLAIN_MESSAGE);
 							//System.out.println(userPassenger);
 							selectedFlight.setPassengerSeat(userPassenger, selectedSeatNumber);

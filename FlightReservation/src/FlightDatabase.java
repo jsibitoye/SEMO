@@ -17,10 +17,10 @@ public class FlightDatabase {
 		Airport Bamako = new Airport("Bamako", "Mali", "BAM");
 		Airport Houston = new Airport("Houston", "USA", "HOU");
 		Passenger[] fakePassengers = new Passenger[4];
-		fakePassengers[0] = new Passenger("Ricky Bobby", "1 Fast st", "3216964587");
-		fakePassengers[1] = new Passenger("Tyler Blankenship", "2 Fast st", "3216964588");
-		fakePassengers[2] = new Passenger("Indranil Roy", "3 Fast st", "3216964589");
-		fakePassengers[3] = new Passenger("Ethan Chou", "4 Fast st", "3216964586");
+		fakePassengers[0] = new Passenger("Ricky Bobby", "1 Fast st", "3216964587", "AA20292");
+		fakePassengers[1] = new Passenger("Tyler Blankenship", "2 Fast st", "3216964588", "SA20292");
+		fakePassengers[2] = new Passenger("Indranil Roy", "3 Fast st", "3216964589", "A120292");
+		fakePassengers[3] = new Passenger("Ethan Chou", "4 Fast st", "3216964586", "A020292");
 		Calendar myCal = Calendar.getInstance();
 		myCal.set(Calendar.YEAR, 2022);
 		myCal.set(Calendar.MONTH, 11);
